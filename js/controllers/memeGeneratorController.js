@@ -40,9 +40,7 @@ function renderMeme() {
 }
 
 function renderTxt(txt, size, color, idx) {
-  console.log('idx(RENDER):',idx)
   const location = getLineLocation(idx)
-
   gCtx.font = `${size}px arial`
   gCtx.fillStyle = color
   gCtx.fillText(txt, location.x, location.y, gElCanvas.width - 40)
@@ -96,6 +94,14 @@ function highlightSelectedLine() {
   const highlightHeight = selectedLine.size
   const x = selectedLine.x
   const y = selectedLine.y
+  setLineWidth(highlightWidth)
   gCtx.strokeRect(x, y - highlightHeight, highlightWidth, highlightHeight)
 }
 
+function onSelectLine(ev) {
+
+  const lineIdx = isLineClicked(ev)
+  if(lineIdx===-1) return
+  selectLine(lineIdx)
+  renderMeme()
+}

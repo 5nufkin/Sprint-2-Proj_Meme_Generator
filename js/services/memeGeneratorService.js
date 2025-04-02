@@ -81,7 +81,6 @@ function getSelectedLine() {
 }
 
 function getLineLocation(lineIdx) {
-  console.log('lineIdx:', lineIdx)
   if (gMeme.lines[lineIdx].x === null) {
     var location
 
@@ -97,8 +96,8 @@ function getLineLocation(lineIdx) {
     }
     _setLineLocation(location)
     return location
+
   } else {
-    console.log('ELSE');
 
     const line = gMeme.lines[lineIdx]
     return { x: line.x, y: line.y }
@@ -107,7 +106,25 @@ function getLineLocation(lineIdx) {
 
 function _setLineLocation({ x, y }) {
   const currLine = gMeme.lines[gMeme.selectedLineIdx]
-  console.log('currLine:', currLine)
   currLine.x = x
   currLine.y = y
+}
+
+function setLineWidth(width) {
+  gMeme.lines[gMeme.selectedLineIdx].width = width
+}
+
+function isLineClicked(ev) {
+  const { offsetX, offsetY, clientX, clientY } = ev
+
+  const clickedLineIdx = gMeme.lines.findIndex((line, idx) => {
+    return (
+      line.txt && (offsetX >= line.x && offsetX <= line.x + line.width && offsetY >= line.y - line.size && offsetY <= line.y)
+    )
+  })
+  return clickedLineIdx
+}
+
+function selectLine(lineIdx) {
+  gMeme.selectedLineIdx = lineIdx
 }

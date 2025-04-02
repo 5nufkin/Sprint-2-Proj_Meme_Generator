@@ -22,12 +22,12 @@
   <main>
     <section class="editor">
       <div class="canvas-container ">
-        <canvas width="200" height="200"></canvas>
+        <canvas width="200" height="200" onclick="onSelectLine(event)"></canvas>
       </div>
       <div class="controls">
         <input class="input-text" oninput="handleTextInput(this)" type="text" placeholder="Enter text">
         <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-meme.jpg">Download</a>
-        <input type="color" oninput="onChangeTxtColor(this)">
+        <input type="color" value="#4682b4" oninput="onChangeTxtColor(this)">
         <button onclick="onChangeFontSize(1)">Increase</button>
         <button onclick="onChangeFontSize(-1)">Decrease</button>
         <button onclick="onAddLine()">Add line</button>
