@@ -1,0 +1,19 @@
+/* LIST HELPERS */
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* FLEX HELPERS */
+.flex{
+  display: flex;
+}
+
+.justify-space-between{
+  justify-content: space-between;
+}
+
+.align-center{
+  align-items: center;
+}

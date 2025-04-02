@@ -1,0 +1,25 @@
+.main-layout {
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+}
+
+.main-layout>*.full {
+  grid-column: 1 / -1;
+}
+
+.main-layout>*:not(.full) {
+  grid-column: 2;
+}
+
+/* MAIN NAV LAYOUT */
+.main-nav{
+  align-items: center;
+}
+
+.main-nav>*{
+  grid-row: 1;
+}
+
+.main-nav ul{
+  justify-self: end;
+}
