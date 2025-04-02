@@ -1,4 +1,4 @@
-.btn{
+.btn {
   display: inline-block;
   padding: 5px;
   background-color: lightsalmon;
@@ -6,6 +6,24 @@
   cursor: pointer;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: salmon;
+}
+
+/* SAVED MEMES */
+.saved-memes article button {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  border: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.saved-memes article button:hover{
+  background-color: rgb(142, 142, 142);
+  font-weight: bold;
 }

@@ -34,10 +34,25 @@ var gMeme = {
     }
   ],
   fontFamily: 'Arial',
-  textAlign: 'left'
+  textAlign: 'left',
 }
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+
+function resetMeme() {
+  gMeme.selectedLineIdx = 0
+  gMeme.lines = [
+    {
+      txt: 'I sometimes eat Falafel',
+      size: 20,
+      color: 'steelblue',
+      x: null,
+      y: null
+    }
+  ]
+  gMeme.fontFamily = 'Arial'
+  gMeme.textAlign = 'left'
+}
 
 function getImgById(imgId) {
   var img = gImgs.find(img => img.id === imgId)
@@ -156,3 +171,10 @@ function removeLine() {
   gMeme.lines.splice([gMeme.selectedLineIdx], 1)
   gMeme.selectedLineIdx = 0
 }
+
+function RandomizeMeme() {
+  setImg(getRandomIntInclusive(0, gImgs.length - 1))
+  resetMeme()
+  gMeme.lines[gMeme.selectedLineIdx].txt = generateSentence(4)
+}
+

@@ -51,19 +51,24 @@
         <button onclick="onMoveVertically(-1)">Up</button>
         <button onclick="onMoveVertically(1)">Down</button>
         <button onclick="onRemoveLine()">Delete</button>
+        <button onclick="onSaveMeme()">Save meme</button>
       </div>
     </section>
 
     <section class="gallery">
     </section>
+
+    <section class="saved-memes gallery"></section>
   </main>
 
 
   <script src="js/services/storageService.js"></script>
   <script src="js/services/utilService.js"></script>
   <script src="js/services/memeGeneratorService.js"></script>
-  <script src="js/controllers/memeGeneratorController.js"></script>
+  <script src="js/services/savedMemesService.js"></script>
   <script src="js/controllers/galleryController.js"></script>
+  <script src="js/controllers/memeGeneratorController.js"></script>
+  <script src="js/controllers/savedMemesController.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 .gallery article{
+  position: relative;
   width: 100%;
 }
 
