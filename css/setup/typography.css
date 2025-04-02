@@ -1,0 +1,47 @@
+/* Bebas Neue - Sans-serif */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url(/fonts/bebas_neue/BebasNeue-Regular.ttf);
+}
+
+/* Delius - Handwriting */
+@font-face {
+  font-family: 'Delius';
+  src: url(/fonts/delius/Delius-Regular.ttf);
+}
+
+/* Inconsolata - Monospace */
+@font-face {
+  font-family: 'Inconsolata';
+  src: url(/fonts/inconsolata/Inconsolata-Regular.ttf);
+}
+
+/* Lato - Sans-serif */
+@font-face {
+  font-family: 'Lato';
+  src: url(/fonts/lato/Lato-Regular.ttf);
+}
+
+/* Patrick Hand - Handwriting */
+@font-face {
+  font-family: 'Patrick Hand';
+  src: url(/fonts/patrick_hand/PatrickHand-Regular.ttf);
+}
+
+/* Playfair - Serif */
+@font-face {
+  font-family: 'Playfair';
+  src: url(/fonts/playfair/PlayfairDisplay-Regular.ttf);
+}
+
+/* Roboto - Sans-serif */
+@font-face {
+  font-family: 'Roboto';
+  src: url(/fonts/roboto/Roboto-Regular.ttf);
+}
+
+/* Wikny Sans - Sans-serif */
+@font-face {
+  font-family: 'Wikny Sans';
+  src: url(/fonts/wikny_sans/WinkySans-Regular.ttf);
+}

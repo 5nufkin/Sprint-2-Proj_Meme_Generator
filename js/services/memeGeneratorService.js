@@ -115,9 +115,9 @@ function setLineWidth(width) {
 }
 
 function isLineClicked(ev) {
-  const { offsetX, offsetY, clientX, clientY } = ev
+  const { offsetX, offsetY} = ev
 
-  const clickedLineIdx = gMeme.lines.findIndex((line, idx) => {
+  const clickedLineIdx = gMeme.lines.findIndex((line) => {
     return (
       line.txt && (offsetX >= line.x && offsetX <= line.x + line.width && offsetY >= line.y - line.size && offsetY <= line.y)
     )
