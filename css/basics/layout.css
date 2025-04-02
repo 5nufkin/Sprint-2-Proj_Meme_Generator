@@ -31,3 +31,11 @@
   grid-template-columns: 50% 50%;
   gap: 15px;
 }
+
+/* GALLERY LAYOUT */
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 10px;
+  padding: 20px 0;
+}
