@@ -1,7 +1,11 @@
 .main-nav{
-  background-color: #666;
+  background-color: #929292;
 }
 
 .main-nav-list{
   gap: 15px;
+}
+
+.main-nav a{
+  color: white;
 }

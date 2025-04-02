@@ -1,6 +1,7 @@
 .main-layout {
   display: grid;
   grid-template-columns: 20px 1fr 20px;
+  grid-template-rows: auto 1fr;
 }
 
 .main-layout>*.full {
@@ -22,4 +23,11 @@
 
 .main-nav ul{
   justify-self: end;
+}
+
+/* CANVAS CONTAINER */
+.editor{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 15px;
 }

@@ -6,10 +6,10 @@
   <link rel="stylesheet" href="css/style.css">
   <title>Meme Generator</title>
 </head>
-<body class="main-layout">
+<body class="main-layout" onload="onInit()">
 
   <header class="full">
-    <nav class="main-layout main-nav flex justify-space-between align-center">
+    <nav class="main-layout main-nav">
       <img class="logo" src="img/logo/logo.png" alt="">
       <ul class="main-nav-list clean-list flex">
         <li><a href="#">Gallery</a></li>
@@ -21,7 +21,13 @@
 
   <main>
     <section class="gallery"></section>
-    <section class="editor"></section>
+
+    <section class="editor">
+      <div class="canvas-container ">
+        <canvas width="200" height="200"></canvas>
+      </div>
+      <div class="controls"></div>
+    </section>
   </main>
 
 

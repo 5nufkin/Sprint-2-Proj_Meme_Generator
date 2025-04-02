@@ -7,7 +7,13 @@ html{
 }
 
 body{
+  height: 100vh;
   margin: 0;
+  background-color: #333;
+}
+
+main{
+  padding-block-start: 30px;
 }
 
 a {

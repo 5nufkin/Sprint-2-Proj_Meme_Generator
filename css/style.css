@@ -10,6 +10,7 @@
 /* COMPONENTS */
 @import url(components/main-nav.css);
 @import url(components/logo.css);
+@import url(components/editor.css);
 
 /* MEDIA QUERIES */
 @import url(setup/mq.css);
