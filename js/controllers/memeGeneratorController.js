@@ -26,23 +26,24 @@ function renderMeme() {
 
   img.onload = function () {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-
     const memeLines = gMeme.lines
+    if(!memeLines.length)return
+    
     memeLines.forEach((memeLine, idx) => {
       renderTxt(memeLine.txt, memeLine.size, memeLine.color, idx)
     })
+
     highlightSelectedLine()
     setInputText()
-    // const memeLine = meme.lines[meme.selectedLineIdx]
-    // renderTxt(memeLine.txt, memeLine.size, memeLine.color, meme.selectedLineIdx)
-    // renderTxt(memeLine.txt, memeLine.size, memeLine.color, meme.selectedLineIdx)
   }
 }
 
 function renderTxt(txt, size, color, idx) {
   const location = getLineLocation(idx)
-  gCtx.font = `${size}px arial`
+  const fontFamily = getFontFamily()
+  gCtx.font = `${size}px ${fontFamily}`
   gCtx.fillStyle = color
+  gCtx.textAlign = getTxtAlignment()
   gCtx.fillText(txt, location.x, location.y, gElCanvas.width - 40)
 }
 
@@ -89,7 +90,7 @@ function setInputText() {
 
 function highlightSelectedLine() {
   const selectedLine = getSelectedLine()
-  if(!selectedLine.txt) return 
+  if (!selectedLine.txt || !selectedLine) return
   const highlightWidth = gCtx.measureText(selectedLine.txt).width
   const highlightHeight = selectedLine.size
   const x = selectedLine.x
@@ -99,9 +100,28 @@ function highlightSelectedLine() {
 }
 
 function onSelectLine(ev) {
-
   const lineIdx = isLineClicked(ev)
-  if(lineIdx===-1) return
+  if (lineIdx === -1) return
   selectLine(lineIdx)
+  renderMeme()
+}
+
+function onChangeFont(newFont) {
+  changeFont(newFont)
+  renderMeme()
+}
+
+function onChangeTxtAlign(newVal) {
+  changeTxtAlign(newVal)
+  renderMeme()
+}
+
+function onMoveVertically(diff) {
+  moveVertically(diff)
+  renderMeme()
+}
+
+function onRemoveLine() {
+  removeLine()
   renderMeme()
 }

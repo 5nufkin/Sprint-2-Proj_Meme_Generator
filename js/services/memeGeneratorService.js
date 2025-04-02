@@ -32,7 +32,9 @@ var gMeme = {
       x: null,
       y: null
     }
-  ]
+  ],
+  fontFamily: 'Arial',
+  textAlign: 'left'
 }
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
@@ -58,7 +60,7 @@ function setImg(imgId) {
 
 function addLine() {
   gMeme.lines.push(_createLine())
-  gMeme.selectedLineIdx++
+  switchLine()
 }
 
 function _createLine() {
@@ -83,7 +85,7 @@ function getSelectedLine() {
 function getLineLocation(lineIdx) {
   if (gMeme.lines[lineIdx].x === null) {
     var location
-
+    // debugger
     switch (lineIdx) {
       case 0:
         location = { x: 20, y: 20 }
@@ -105,6 +107,7 @@ function getLineLocation(lineIdx) {
 }
 
 function _setLineLocation({ x, y }) {
+  // debugger
   const currLine = gMeme.lines[gMeme.selectedLineIdx]
   currLine.x = x
   currLine.y = y
@@ -115,7 +118,7 @@ function setLineWidth(width) {
 }
 
 function isLineClicked(ev) {
-  const { offsetX, offsetY} = ev
+  const { offsetX, offsetY } = ev
 
   const clickedLineIdx = gMeme.lines.findIndex((line) => {
     return (
@@ -127,4 +130,29 @@ function isLineClicked(ev) {
 
 function selectLine(lineIdx) {
   gMeme.selectedLineIdx = lineIdx
+}
+
+function changeFont(newFont) {
+  gMeme.fontFamily = newFont
+}
+
+function getFontFamily() {
+  return gMeme.fontFamily
+}
+
+function changeTxtAlign(newVal) {
+  gMeme.textAlign = newVal
+}
+
+function getTxtAlignment() {
+  return gMeme.textAlign
+}
+
+function moveVertically(diff) {
+  gMeme.lines[gMeme.selectedLineIdx].y += diff
+}
+
+function removeLine() {
+  gMeme.lines.splice([gMeme.selectedLineIdx], 1)
+  gMeme.selectedLineIdx = 0
 }

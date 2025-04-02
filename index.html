@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <title>Meme Generator</title>
 </head>
+
 <body class="main-layout" onload="onInit()">
- 
+
   <header class="full">
     <nav class="main-layout main-nav">
       <img class="logo" src="img/logo/logo.png" alt="">
@@ -32,6 +34,23 @@
         <button onclick="onChangeFontSize(-1)">Decrease</button>
         <button onclick="onAddLine()">Add line</button>
         <button onclick="onSwitchLine()">Switch Line</button>
+        <select name="font-family" id="" onchange="onChangeFont(this.value)">
+          <option value="'Arial'">Arial</option>
+          <option value="'Helvetica'">Helvetica</option>
+          <option value="'Verdana'">Verdana</option>
+          <option value="'Tahoma'">Tahoma</option>
+          <option value="'Trebuchet MS'">Trebuchet MS</option>
+          <option value="'Impact'">Impact</option>
+          <option value="'Courier New'">Courier New</option>
+          <option value="'Times New Roman'">Times New Roman</option>
+          <option value="'Georgia'">Georgia</option>
+        </select>
+        <button onclick="onChangeTxtAlign('left')">Align left</button>
+        <button onclick="onChangeTxtAlign('center')">Align center</button>
+        <button onclick="onChangeTxtAlign('right')">Align right</button>
+        <button onclick="onMoveVertically(-1)">Up</button>
+        <button onclick="onMoveVertically(1)">Down</button>
+        <button onclick="onRemoveLine()">Delete</button>
       </div>
     </section>
 
@@ -46,4 +65,5 @@
   <script src="js/controllers/memeGeneratorController.js"></script>
   <script src="js/controllers/galleryController.js"></script>
 </body>
+
 </html>
