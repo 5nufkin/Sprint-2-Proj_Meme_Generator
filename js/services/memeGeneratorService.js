@@ -36,7 +36,8 @@ var gMeme = {
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function getImgById(imgId) {
-  return gImgs.find(img => img.id === imgId)
+  var img = gImgs.find(img => img.id === imgId)
+  return img
 }
 
 function getMeme() {
@@ -46,4 +47,8 @@ function getMeme() {
 function setLineTxt(txt) {
   gMeme.lines[gMeme.selectedLineIdx].txt = txt
   renderMeme()
+}
+
+function setImg(imgId) {
+  gMeme.selectedImgId = imgId
 }

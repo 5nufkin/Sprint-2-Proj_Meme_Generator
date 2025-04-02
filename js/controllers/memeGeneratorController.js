@@ -19,6 +19,7 @@ function resizeCanvas() {
 function renderMeme() {
   const meme = getMeme()
   const img = new Image()
+  
   img.src = getImgById(meme.selectedImgId).url
 
   img.onload = function () {
