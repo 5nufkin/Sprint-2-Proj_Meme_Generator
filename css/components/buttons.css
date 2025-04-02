@@ -1,0 +1,11 @@
+.btn{
+  display: inline-block;
+  padding: 5px;
+  background-color: lightsalmon;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background-color: salmon;
+}

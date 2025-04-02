@@ -1,7 +1,7 @@
 'use strict'
 
 var gImgs = [
-  { id: 1, url: 'img/1.jpg', keywords: ['politics', 'trump', 'president','angry'] },
+  { id: 1, url: 'img/1.jpg', keywords: ['politics', 'trump', 'president', 'angry'] },
   { id: 2, url: 'img/2.jpg', keywords: ['puppy', 'funny', 'animals'] },
   { id: 3, url: 'img/3.jpg', keywords: ['puppy', 'funny', 'animals', 'baby', 'sleep'] },
   { id: 4, url: 'img/4.jpg', keywords: ['cat', 'laptop', 'animals', 'sleep'] },
@@ -11,24 +11,26 @@ var gImgs = [
   { id: 8, url: 'img/8.jpg', keywords: ['magic', 'funny', 'purple', 'bowtie', 'smile'] },
   { id: 9, url: 'img/9.jpg', keywords: ['smile', 'funny', 'asian', 'baby', 'little'] },
   { id: 10, url: 'img/10.jpg', keywords: ['politics', 'funny', 'laugh', 'obama', 'president'] },
-  { id: 11, url: 'img/11.jpg', keywords: ['sports', 'funny', 'kiss', 'angry', 'nba','basketball'] },
-  { id: 12, url: 'img/12.jpg', keywords: ['israeli', 'funny', 'pointing', 'glasses', 'crime','law'] },
-  { id: 13, url: 'img/13.jpg', keywords: ['dicaprio', 'leonardo', 'viral', 'toast', 'funny','smile','movie'] },
+  { id: 11, url: 'img/11.jpg', keywords: ['sports', 'funny', 'kiss', 'angry', 'nba', 'basketball'] },
+  { id: 12, url: 'img/12.jpg', keywords: ['israeli', 'funny', 'pointing', 'glasses', 'crime', 'law'] },
+  { id: 13, url: 'img/13.jpg', keywords: ['dicaprio', 'leonardo', 'viral', 'toast', 'funny', 'smile', 'movie'] },
   { id: 14, url: 'img/14.jpg', keywords: ['matrix', 'funny', 'glasses', 'viral', 'movie'] },
-  { id: 15, url: 'img/15.jpg', keywords: ['zero', 'funny', 'movie', 'actor','viral'] },
+  { id: 15, url: 'img/15.jpg', keywords: ['zero', 'funny', 'movie', 'actor', 'viral'] },
   { id: 16, url: 'img/16.jpg', keywords: ['movie', 'funny', 'viral', 'laugh', 'actor'] },
   { id: 17, url: 'img/17.jpg', keywords: ['putin', 'funny', 'russia', 'president', 'politics'] },
-  { id: 18, url: 'img/18.jpg', keywords: ['movie', 'funny', 'cartoon', 'buzz', 'woody','toys'] },
+  { id: 18, url: 'img/18.jpg', keywords: ['movie', 'funny', 'cartoon', 'buzz', 'woody', 'toys'] },
 ]
 
 var gMeme = {
-  selectedImgId: 3,
+  selectedImgId: null,
   selectedLineIdx: 0,
   lines: [
     {
       txt: 'I sometimes eat Falafel',
       size: 20,
-      color: 'steelblue'
+      color: 'steelblue',
+      x: null,
+      y: null
     }
   ]
 }
@@ -41,7 +43,8 @@ function getImgById(imgId) {
 }
 
 function getMeme() {
-  return gMeme
+  if (gMeme.selectedImgId) return gMeme
+  return null
 }
 
 function setLineTxt(txt) {
@@ -51,4 +54,60 @@ function setLineTxt(txt) {
 
 function setImg(imgId) {
   gMeme.selectedImgId = imgId
+}
+
+function addLine() {
+  gMeme.lines.push(_createLine())
+  gMeme.selectedLineIdx++
+}
+
+function _createLine() {
+  return {
+    txt: 'Enter Text',
+    size: 20,
+    color: 'steelblue',
+    x: null,
+    y: null
+  }
+}
+
+function switchLine() {
+  gMeme.selectedLineIdx++
+  if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
+}
+
+function getSelectedLine() {
+  return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function getLineLocation(lineIdx) {
+  console.log('lineIdx:', lineIdx)
+  if (gMeme.lines[lineIdx].x === null) {
+    var location
+
+    switch (lineIdx) {
+      case 0:
+        location = { x: 20, y: 20 }
+        break
+      case 1:
+        location = { x: 20, y: gElCanvas.height - 20 }
+        break
+      default:
+        location = { x: 20, y: gElCanvas.height / 2 }
+    }
+    _setLineLocation(location)
+    return location
+  } else {
+    console.log('ELSE');
+
+    const line = gMeme.lines[lineIdx]
+    return { x: line.x, y: line.y }
+  }
+}
+
+function _setLineLocation({ x, y }) {
+  const currLine = gMeme.lines[gMeme.selectedLineIdx]
+  console.log('currLine:', currLine)
+  currLine.x = x
+  currLine.y = y
 }

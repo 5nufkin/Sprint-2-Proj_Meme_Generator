@@ -17,3 +17,13 @@
 .align-center{
   align-items: center;
 }
+
+/* GENERAL */
+ 
+body main .hidden{
+  display: none;
+}
+
+.selected{
+  border: 1px solid steelblue
+}

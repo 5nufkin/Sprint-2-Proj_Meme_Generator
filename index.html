@@ -25,13 +25,17 @@
         <canvas width="200" height="200"></canvas>
       </div>
       <div class="controls">
-        <input oninput="handleTextInput(this)" type="text">
+        <input class="input-text" oninput="handleTextInput(this)" type="text" placeholder="Enter text">
+        <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-meme.jpg">Download</a>
+        <input type="color" oninput="onChangeTxtColor(this)">
+        <button onclick="onChangeFontSize(1)">Increase</button>
+        <button onclick="onChangeFontSize(-1)">Decrease</button>
+        <button onclick="onAddLine()">Add line</button>
+        <button onclick="onSwitchLine()">Switch Line</button>
       </div>
     </section>
 
     <section class="gallery">
-      <article><img src="img/1.jpg" alt=""></article>
-      <article><img src="img/2.jpg" alt=""></article>
     </section>
   </main>
 
