@@ -10,3 +10,7 @@
 canvas{
   border: 2px solid #c1c1c1be;
 }
+
+.editor .controls{
+  padding: 30px 20px;
+}

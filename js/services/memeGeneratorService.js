@@ -27,3 +27,8 @@ function getImgById(imgId) {
 function getMeme() {
   return gMeme
 }
+
+function setLineTxt(txt) {
+  gMeme.lines[gMeme.selectedLineIdx].txt = txt
+  renderMeme()
+}
