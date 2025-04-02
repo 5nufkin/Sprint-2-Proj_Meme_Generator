@@ -16,17 +16,25 @@ function resizeCanvas() {
   gElCanvas.width = elContainer.clientWidth - 40
 }
 
-function renderMeme(imgId, txt = 'Enter txt') {
+function renderMeme() {
+  const meme = getMeme()
   const img = new Image()
-  img.src = getImgById(imgId).url
+
+  console.log('meme:', meme)
+  console.log('img:', img)
+
+  img.src = getImgById(meme.selectedImgId).url
   img.onload = function () {
+    const memeLine = meme.lines[meme.selectedLineIdx]
+    console.log('memeLine:', memeLine)
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    renderTxt(txt)
+    renderTxt(memeLine.txt, memeLine.size, memeLine.color)
   }
 }
 
-function renderTxt(txt = 'Enter text') {
-  gCtx.font = "25px arial"
-  gCtx.fillStyle = 'white'
+function renderTxt(txt, size, color) {
+  console.log('size:', size)
+  gCtx.font = `${size}px arial`
+  gCtx.fillStyle = color
   gCtx.fillText(txt, 20, 20, gElCanvas.width - 20)
 }

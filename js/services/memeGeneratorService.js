@@ -7,13 +7,13 @@ var gImgs = [
 ]
 
 var gMeme = {
-  selectedImgId: 5,
+  selectedImgId: 3,
   selectedLineIdx: 0,
   lines: [
     {
       txt: 'I sometimes eat Falafel',
       size: 20,
-      color: 'red'
+      color: 'steelblue'
     }
   ]
 }
@@ -22,4 +22,8 @@ var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function getImgById(imgId) {
   return gImgs.find(img => img.id === imgId)
+}
+
+function getMeme() {
+  return gMeme
 }
