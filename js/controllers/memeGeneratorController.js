@@ -22,7 +22,7 @@ function renderMeme() {
   const meme = getMeme()
   const img = new Image()
 
-  img.src = getImgById(meme.selectedImgId).url
+  img.src = getImgById(meme.selectedImgId).url //TODO maybe change condition to fix slow rendering
 
   img.onload = function () {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
@@ -99,7 +99,6 @@ function highlightSelectedLine() {
 }
 
 function onSelectLine(ev) {
-  console.log('ev(FROM ONSELECT):', ev)
   const pos = getEvPos(ev)
   const lineIdx = isLineClicked(pos)
   if (lineIdx === -1) return
@@ -184,17 +183,18 @@ function getEvPos(ev) {
 }
 
 function onUploadToFB(url) {
-  // console.log('url:', url)
   window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
 }
 
 function onUploadImg(ev) {
   ev.preventDefault()
   const canvasData = gElCanvas.toDataURL('image/jpeg')
+
   function onSuccess(uploadedImgUrl) {
     const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+    
     document.querySelector('.share-container').innerHTML = `
-          <a href="${uploadedImgUrl}">Image Url</a>
+          <a target="_blank" href="${uploadedImgUrl}">Image Url</a>
          
           <button class="btn-facebook" target="_blank" onclick="onUploadToFB('${encodedUploadedImgUrl}')">
               Share on Facebook  

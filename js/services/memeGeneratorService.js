@@ -183,3 +183,18 @@ function RandomizeMeme() {
 function canvasToDataUrl() {
   return gElCanvas.toDataURL('image/jpeg')
 }
+
+function addUserImg(url) {
+  uploadImg(url,)
+  const newImg = _createImg(url) 
+  gImgs.push(newImg)
+  setImg(newImg.id)
+  renderMeme() //TODO just for testing - move to a controller
+}
+
+function _createImg(url) {
+  return {
+    id: gImgs.length + 1,
+    url,
+  }
+}
