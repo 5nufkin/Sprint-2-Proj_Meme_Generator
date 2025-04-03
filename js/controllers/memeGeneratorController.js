@@ -100,7 +100,9 @@ function highlightSelectedLine() {
 }
 
 function onSelectLine(ev) {
-  const lineIdx = isLineClicked(ev)
+  console.log('ev(FROM ONSELECT):',ev)
+  const pos = getEvPos(ev)
+  const lineIdx = isLineClicked(pos)
   if (lineIdx === -1) return
   selectLine(lineIdx)
   renderMeme()
@@ -129,4 +131,55 @@ function onRemoveLine() {
 function onAddEmoji(emoji) {
   addLine(emoji.innerText)
   renderMeme()
+}
+
+function onDown(ev) {
+  const pos = getEvPos(ev)
+  const lineIdx = isLineClicked(pos)
+  if (lineIdx === -1) return
+  selectLine(lineIdx)
+  gIsDrag = true
+  gLastPos = pos
+  document.body.style.cursor = 'move'
+  renderMeme()
+}
+
+function onUp() {
+  gIsDrag = false
+  document.body.style.cursor = 'default'
+}
+
+function onMove(ev) {
+  if (!gIsDrag) return
+  const pos = getEvPos(ev)
+  const dx = pos.x - gLastPos.x
+  const dy = pos.y - gLastPos.y
+  moveLine(dx, dy)
+  gLastPos = pos
+  renderMeme()
+}
+
+function moveLine(dx, dy) {
+  gMeme.lines[gMeme.selectedLineIdx].x += dx
+  gMeme.lines[gMeme.selectedLineIdx].y += dy
+}
+
+function getEvPos(ev) {
+  const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+  let pos = {
+    x: ev.offsetX,
+    y: ev.offsetY,
+  }
+
+  if (TOUCH_EVS.includes(ev.type)) {
+    ev.preventDefault()
+    ev = ev.changedTouches[0]
+    pos = {
+      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+
+    }
+  }
+  return pos
 }

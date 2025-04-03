@@ -24,7 +24,9 @@
   <main>
     <section class="editor">
       <div class="canvas-container ">
-        <canvas width="200" height="200" onclick="onSelectLine(event)"></canvas>
+        <canvas width="200" height="200" onclick="onSelectLine(event)" onmousedown="onDown(event)"
+          ontouchstart="onDown(event)" onmouseup="onUp()" ontouchend="onUp()" onmousemove="onMove(event)"
+          ontouchmove="onMove(event)"></canvas>
       </div>
       <div class="controls">
         <input class="input-text" oninput="handleTextInput(this)" type="text" placeholder="Enter text">
@@ -66,9 +68,8 @@
       <div class="gallery-controls">
         <div>
           <label for="filter-by">
-            <input oninput="onFilterBy(this.value)" list="filter-options" id="filter-by"
-              placeholder="Search">
-              <button onclick="onClearFilter()">Clear</button>
+            <input oninput="onFilterBy(this.value)" list="filter-options" id="filter-by" placeholder="Search">
+            <button onclick="onClearFilter()">Clear</button>
           </label>
           <datalist id="filter-options">
             <option value="Funny"></option>

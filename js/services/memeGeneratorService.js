@@ -39,6 +39,10 @@ var gMeme = {
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
+// DRAG & DROP
+var gLastPos
+var gIsDrag = false
+
 function resetMeme() {
   gMeme.selectedLineIdx = 0
   gMeme.lines = [
@@ -79,7 +83,7 @@ function addLine(txt = '') {
 }
 
 function _createLine(txt) {
-  if(!txt)txt='Enter text'
+  if (!txt) txt = 'Enter text'
   return {
     txt,
     size: 20,
@@ -122,7 +126,6 @@ function getLineLocation(lineIdx) {
 }
 
 function _setLineLocation({ x, y }) {
-  // debugger
   const currLine = gMeme.lines[gMeme.selectedLineIdx]
   currLine.x = x
   currLine.y = y
@@ -132,12 +135,11 @@ function setLineWidth(width) {
   gMeme.lines[gMeme.selectedLineIdx].width = width
 }
 
-function isLineClicked(ev) {
-  const { offsetX, offsetY } = ev
-
+function isLineClicked(pos) {
+  const { x, y } = pos
   const clickedLineIdx = gMeme.lines.findIndex((line) => {
     return (
-      line.txt && (offsetX >= line.x && offsetX <= line.x + line.width && offsetY >= line.y - line.size && offsetY <= line.y)
+      line.txt && (x >= line.x && x <= line.x + line.width && y >= line.y - line.size && y <= line.y)
     )
   })
   return clickedLineIdx
