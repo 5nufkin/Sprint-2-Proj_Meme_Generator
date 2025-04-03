@@ -5,71 +5,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/dc07f2efd2.js" crossorigin="anonymous"></script>
   <title>Meme Generator</title>
 </head>
 
 <body class="main-layout" onload="onInit()">
 
-  <header class="full">
-    <nav class="main-layout main-nav">
-      <img class="logo" src="img/logo/logo.png" alt="">
+  <header class="full main-layout">
+    <nav class="main-nav full main-layout">
+      <img class="logo" onclick="handleSectionChange('gallery-container')" src="img/logo/logo.png" alt="">
       <ul class="main-nav-list clean-list flex">
-        <li><a href="#">Gallery</a></li>
-        <li><a href="#">Saved</a></li>
-        <li><a href="#">About</a></li>
+        <li><a onclick="handleSectionChange('gallery-container')" href="#">Gallery</a></li>
+        <li><a onclick="handleSectionChange('saved-memes')" href="#">Saved</a></li>
+        <li><a onclick="handleSectionChange('about')" href="#">About</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="editor">
+    <section class="editor app-section hidden">
       <div class="canvas-container ">
-        <canvas width="200" height="200" onclick="onSelectLine(event)" onmousedown="onDown(event)"
+        <canvas width="350" height="350" onclick="onSelectLine(event)" onmousedown="onDown(event)"
           ontouchstart="onDown(event)" onmouseup="onUp()" ontouchend="onUp()" onmousemove="onMove(event)"
           ontouchmove="onMove(event)"></canvas>
       </div>
+
       <div class="controls">
-        <input class="input-text" oninput="handleTextInput(this)" type="text" placeholder="Enter text">
-        <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-meme.jpg">Download</a>
-        <input type="color" value="#4682b4" oninput="onChangeTxtColor(this)">
-        <button onclick="onChangeFontSize(1)">Increase</button>
-        <button onclick="onChangeFontSize(-1)">Decrease</button>
-        <button onclick="onAddLine()">Add line</button>
-        <button onclick="onSwitchLine()">Switch Line</button>
-        <select name="font-family" id="" onchange="onChangeFont(this.value)">
-          <option value="'Arial'">Arial</option>
-          <option value="'Helvetica'">Helvetica</option>
-          <option value="'Verdana'">Verdana</option>
-          <option value="'Tahoma'">Tahoma</option>
-          <option value="'Trebuchet MS'">Trebuchet MS</option>
-          <option value="'Impact'">Impact</option>
-          <option value="'Courier New'">Courier New</option>
-          <option value="'Times New Roman'">Times New Roman</option>
-          <option value="'Georgia'">Georgia</option>
-        </select>
-        <button onclick="onChangeTxtAlign('left')">Align left</button>
-        <button onclick="onChangeTxtAlign('center')">Align center</button>
-        <button onclick="onChangeTxtAlign('right')">Align right</button>
-        <button onclick="onMoveVertically(-1)">Up</button>
-        <button onclick="onMoveVertically(1)">Down</button>
-        <button onclick="onRemoveLine()">Delete</button>
-        <button onclick="onSaveMeme()">Save meme</button>
-        <div class="emojis">
-          <button onclick="onAddEmoji(this)" class="btn emoji-btn">😂</button>
-          <button onclick="onAddEmoji(this)" class="btn emoji-btn">💩</button>
-          <button onclick="onAddEmoji(this)" class="btn emoji-btn">😡</button>
-          <button onclick="onAddEmoji(this)" class="btn emoji-btn">🤡</button>
-          <button onclick="onAddEmoji(this)" class="btn emoji-btn">🙄</button>
+        <div class="controls-card">
+
+          <input class="editor-input input-text" oninput="handleTextInput(this)" type="text" placeholder="Enter text">
+
+          <div class="editor-line-actions">
+            <button class="editor-input" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+            <button class="editor-input" onclick="onSwitchLine()"><i class="fa-solid fa-arrows-up-down"></i></i></button>
+            <button class="editor-input" onclick="onRemoveLine()"><i class="fa-solid fa-trash-can"></i></button>
+          </div>
+
+          <div class="editor-size-color">
+            <button class="editor-input" onclick="onMoveVertically(-1)"><i class="fa-solid fa-up-long"></i></button>
+            <button class="editor-input" onclick="onMoveVertically(1)"><i class="fa-solid fa-down-long"></i></button>
+          </div>
+          
+          
+          <div class="editor-typography">
+            <select class="editor-input" name="font-family" id="" onchange="onChangeFont(this.value)">
+              <option value="'Arial'">Arial</option>
+              <option value="'Helvetica'">Helvetica</option>
+              <option value="'Verdana'">Verdana</option>
+              <option value="'Tahoma'">Tahoma</option>
+              <option value="'Trebuchet MS'">Trebuchet MS</option>
+              <option value="'Impact'">Impact</option>
+              <option value="'Courier New'">Courier New</option>
+              <option value="'Times New Roman'">Times New Roman</option>
+              <option value="'Georgia'">Georgia</option>
+            </select>
+            
+            <button class="editor-input" onclick="onChangeFontSize(1)"><i
+              class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
+              <button class="editor-input" onclick="onChangeFontSize(-1)"><i class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
+              
+              <input class="editor-input" type="color" value="#4682b4" oninput="onChangeTxtColor(this)">
+              
+            <button class="editor-input" onclick="onChangeTxtAlign('left')"><i class="fa-solid fa-align-left"></i></button>
+            <button class="editor-input" onclick="onChangeTxtAlign('center')"><i class="fa-solid fa-align-center"></i></button>
+            <button class="editor-input" onclick="onChangeTxtAlign('right')"><i class="fa-solid fa-align-right"></i></button>
+
+          </div>
+
+          <div class="emojis">
+            <button class="editor-input btn emoji-btn" onclick="onAddEmoji(this)">😂</button>
+            <button class="editor-input btn emoji-btn" onclick="onAddEmoji(this)">💩</button>
+            <button class="editor-input btn emoji-btn" onclick="onAddEmoji(this)">😡</button>
+            <button class="editor-input btn emoji-btn" onclick="onAddEmoji(this)">🤡</button>
+            <button class="editor-input btn emoji-btn" onclick="onAddEmoji(this)">🙄</button>
+          </div>
+          
+          <div class="editor-share">
+            <button class="editor-input" onclick="onSaveMeme()"><i class="fa-solid fa-floppy-disk"></i></button>
+            <a href="#" class="editor-input" onclick="onDownloadImg(this)" download="my-meme.jpg"><i
+                class="fa-solid fa-download"></i></a>
+            <button class="editor-input" onclick="onUploadImg(event)"><i class="fa-solid fa-share-from-square"></i></button>
+            <section class="share-container"></section>
+          </div>
+
         </div>
-        <button onclick="onUploadImg(event)">Share</button>
-        <section class="share-container"></section>
       </div>
     </section>
 
-    <section class="gallery-container">
+    <section class="gallery-container app-section">
       <div class="gallery-controls">
-        <div>
-          <label for="filter-by">
+        <button class="btn btn-randomize" onclick="onRandomizeMeme()">I'm flexible</button>
+        <div class="search-bar-container">
+          <label class="search-container" for="filter-by">
             <input oninput="onFilterBy(this.value)" list="filter-options" id="filter-by" placeholder="Search">
             <button onclick="onClearFilter()">Clear</button>
           </label>
@@ -81,15 +108,14 @@
             <option value="Politics"></option>
           </datalist>
         </div>
-        <button class="btn btn-randomize" onclick="onRandomizeMeme()">I'm flexible</button>
-        <datalist placeholder="Search">
-          <option value="">Choco</option>
-        </datalist>
+
       </div>
+
       <section class="gallery">
       </section>
     </section>
-    <section class="saved-memes gallery"></section>
+
+    <section class="saved-memes gallery hidden app-section"></section>
   </main>
 
 
@@ -99,6 +125,7 @@
   <script src="js/services/memeGeneratorService.js"></script>
   <script src="js/services/savedMemesService.js"></script>
   <script src="js/services/uploadService.js"></script>
+  <script src="js/controllers/mainController.js"></script>
   <script src="js/controllers/galleryController.js"></script>
   <script src="js/controllers/memeGeneratorController.js"></script>
   <script src="js/controllers/savedMemesController.js"></script>

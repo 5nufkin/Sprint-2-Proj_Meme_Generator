@@ -10,12 +10,12 @@ function renderGallery() {
 function onImgSelect(imgId) {
   setImg(imgId)
   resetMeme()
-  renderMeme()
+  handleSectionChange('editor')
 }
 
 function onRandomizeMeme() {
-  RandomizeMeme()
-  renderMeme()
+  randomizeMeme()
+  handleSectionChange('editor')
 }
 
 function onFilterBy(filter) {
@@ -35,7 +35,6 @@ function onUploadClick() {
 }
 
 function onImgInput(ev) {
-  console.log('ev:',ev)
   // loadImageFromInput(ev, renderImg)
   loadImageFromInput(ev, addUserImg)
 }
@@ -55,8 +54,8 @@ function loadImageFromInput(ev, onImageReady) {
   reader.readAsDataURL(ev.target.files[0])
 }
 
-function renderImg(img) {
-  gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
-  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-  renderMeme()
-}
+// function renderImg(img) {
+//   gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
+//   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+//   renderMeme()
+// }

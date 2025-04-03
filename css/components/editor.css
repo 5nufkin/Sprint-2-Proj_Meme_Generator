@@ -1,16 +1,26 @@
-.editor{
+.editor {
   background-color: #666;
 }
 
-.canvas-container{
+.canvas-container {
   width: 100%;
   padding: 30px 20px;
 }
 
-canvas{
+canvas {
   border: 2px solid #c1c1c1be;
+  border-radius: 15px;
 }
 
-.editor .controls{
+/* EDITOR CONTROLS */
+
+.editor .controls {
   padding: 30px 20px;
 }
+
+.editor .controls-card {
+  background-color: #222;
+  border-radius: 15px;
+}
+
+

@@ -10,3 +10,30 @@
   object-fit: cover;
   cursor: pointer;
 }
+
+/* GALLERY CONTROLS */
+.gallery-controls{
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gallery-controls>*{
+  width: 100%;
+}
+
+.search-container input,
+.gallery-controls .btn-randomize{
+  flex: 1; 
+  padding: 5px;
+  font-size: 16px;
+  border: 2px solid rgb(120, 174, 220);
+  border-radius: 15px;
+  background-color: #222;
+  color: white;
+}
+
+.search-container button{
+  padding: 5px;
+}

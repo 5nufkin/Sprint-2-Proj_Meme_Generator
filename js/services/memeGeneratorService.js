@@ -107,7 +107,7 @@ function getLineLocation(lineIdx) {
     var location
     switch (lineIdx) {
       case 0:
-        location = { x: 20, y: 20 }
+        location = { x: 20, y: 40 }
         break
       case 1:
         location = { x: 20, y: gElCanvas.height - 20 }
@@ -174,7 +174,7 @@ function removeLine() {
   gMeme.selectedLineIdx = 0
 }
 
-function RandomizeMeme() {
+function randomizeMeme() {
   setImg(getRandomIntInclusive(0, gImgs.length - 1))
   resetMeme()
   gMeme.lines[gMeme.selectedLineIdx].txt = generateSentence(4)
@@ -187,8 +187,11 @@ function canvasToDataUrl() {
 function addUserImg(url) {
   const newImg = _createImg(url) 
   gImgs.push(newImg)
+  
   setImg(newImg.id)
-  renderMeme() //TODO just for testing - move to a controller
+  // renderMeme() //TODO just for testing - move to a controller
+  handleSectionChange('editor')
+  updateSavedMemes()
 }
 
 function _createImg(url) {

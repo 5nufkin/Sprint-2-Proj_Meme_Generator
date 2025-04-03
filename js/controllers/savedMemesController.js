@@ -15,7 +15,8 @@ function renderSavedMemes() {
 }
 
 function coverCanvasWithMeme(memeIdx) {
-  gMeme = {...gSavedMemes[memeIdx]}
+  gMeme = { ...gSavedMemes[memeIdx] }
+  handleSectionChange('editor')
   renderMeme()
 }
 

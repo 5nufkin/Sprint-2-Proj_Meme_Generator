@@ -30,3 +30,7 @@ function removeMeme(memeIdx) {
   gSavedMemes.splice(memeIdx, 1)
   _saveMemesToStorage()
 }
+
+function updateSavedMemes() {
+  _saveMemesToStorage()
+}

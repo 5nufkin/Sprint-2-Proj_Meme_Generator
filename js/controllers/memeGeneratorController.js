@@ -25,8 +25,9 @@ function renderMeme() {
   img.src = getImgById(meme.selectedImgId).url //TODO maybe change condition to fix slow rendering
 
   img.onload = function () {
+    gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    const memeLines = gMeme.lines
+    const memeLines = meme.lines
     if (!memeLines.length) return
 
     memeLines.forEach((memeLine, idx) => {
@@ -191,9 +192,9 @@ function onUploadImg(ev) {
   const canvasData = gElCanvas.toDataURL('image/jpeg')
 
   function onSuccess(uploadedImgUrl) {
-    console.log('uploadedImgUrl:',uploadedImgUrl)
+    console.log('uploadedImgUrl:', uploadedImgUrl)
     const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-    console.log('encodedUploadedImgUrl:',encodedUploadedImgUrl)
+    console.log('encodedUploadedImgUrl:', encodedUploadedImgUrl)
     document.querySelector('.share-container').innerHTML = `
           <a target="_blank" href="${uploadedImgUrl}">Image Url</a>
          
