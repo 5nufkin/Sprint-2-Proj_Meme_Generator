@@ -73,14 +73,15 @@ function setImg(imgId) {
   gMeme.selectedImgId = imgId
 }
 
-function addLine() {
-  gMeme.lines.push(_createLine())
+function addLine(txt = '') {
+  gMeme.lines.push(_createLine(txt))
   switchLine()
 }
 
-function _createLine() {
+function _createLine(txt) {
+  if(!txt)txt='Enter text'
   return {
-    txt: 'Enter Text',
+    txt,
     size: 20,
     color: 'steelblue',
     x: null,
@@ -100,7 +101,6 @@ function getSelectedLine() {
 function getLineLocation(lineIdx) {
   if (gMeme.lines[lineIdx].x === null) {
     var location
-    // debugger
     switch (lineIdx) {
       case 0:
         location = { x: 20, y: 20 }

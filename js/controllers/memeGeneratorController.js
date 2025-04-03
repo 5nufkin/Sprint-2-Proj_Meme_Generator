@@ -27,8 +27,8 @@ function renderMeme() {
   img.onload = function () {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     const memeLines = gMeme.lines
-    if(!memeLines.length)return
-    
+    if (!memeLines.length) return
+
     memeLines.forEach((memeLine, idx) => {
       renderTxt(memeLine.txt, memeLine.size, memeLine.color, idx)
     })
@@ -123,5 +123,10 @@ function onMoveVertically(diff) {
 
 function onRemoveLine() {
   removeLine()
+  renderMeme()
+}
+
+function onAddEmoji(emoji) {
+  addLine(emoji.innerText)
   renderMeme()
 }

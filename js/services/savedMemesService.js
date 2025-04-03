@@ -8,15 +8,6 @@ function getSavedMemes() {
   return loadFromStorage(STORAGE_KEY)
 }
 
-// function saveMeme() {
-//   debugger
-//   const meme = getMeme()
-//   console.log('gSavedMemes:',gSavedMemes)
-//   gSavedMemes.unshift(meme)
-//   console.log('gSavedMemes:',gSavedMemes)
-//   _saveMemesToStorage()
-// }
-
 function _saveMemesToStorage() {
   saveToStorage(STORAGE_KEY, gSavedMemes)
 }
