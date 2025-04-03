@@ -52,8 +52,7 @@ function handleTextInput(elInput) {
 }
 
 function onDownloadImg(elLink) {
-  const imgContent = gElCanvas.toDataURL('image/jpeg')
-  elLink.href = imgContent
+  elLink.href = canvasToDataUrl()
 }
 
 function onChangeTxtColor(elColorPicker) {
@@ -100,7 +99,7 @@ function highlightSelectedLine() {
 }
 
 function onSelectLine(ev) {
-  console.log('ev(FROM ONSELECT):',ev)
+  console.log('ev(FROM ONSELECT):', ev)
   const pos = getEvPos(ev)
   const lineIdx = isLineClicked(pos)
   if (lineIdx === -1) return
@@ -182,4 +181,25 @@ function getEvPos(ev) {
     }
   }
   return pos
+}
+
+function onUploadToFB(url) {
+  // console.log('url:', url)
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`)
+}
+
+function onUploadImg(ev) {
+  ev.preventDefault()
+  const canvasData = gElCanvas.toDataURL('image/jpeg')
+  function onSuccess(uploadedImgUrl) {
+    const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+    document.querySelector('.share-container').innerHTML = `
+          <a href="${uploadedImgUrl}">Image Url</a>
+         
+          <button class="btn-facebook" target="_blank" onclick="onUploadToFB('${encodedUploadedImgUrl}')">
+              Share on Facebook  
+          </button>
+      `
+  }
+  uploadImg(canvasData, onSuccess)
 }

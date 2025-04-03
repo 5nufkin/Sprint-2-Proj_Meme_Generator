@@ -179,3 +179,7 @@ function RandomizeMeme() {
   resetMeme()
   gMeme.lines[gMeme.selectedLineIdx].txt = generateSentence(4)
 }
+
+function canvasToDataUrl() {
+  return gElCanvas.toDataURL('image/jpeg')
+}
