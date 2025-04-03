@@ -191,8 +191,9 @@ function onUploadImg(ev) {
   const canvasData = gElCanvas.toDataURL('image/jpeg')
 
   function onSuccess(uploadedImgUrl) {
+    console.log('uploadedImgUrl:',uploadedImgUrl)
     const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-    
+    console.log('encodedUploadedImgUrl:',encodedUploadedImgUrl)
     document.querySelector('.share-container').innerHTML = `
           <a target="_blank" href="${uploadedImgUrl}">Image Url</a>
          

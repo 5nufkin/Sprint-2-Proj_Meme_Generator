@@ -185,7 +185,6 @@ function canvasToDataUrl() {
 }
 
 function addUserImg(url) {
-  uploadImg(url,)
   const newImg = _createImg(url) 
   gImgs.push(newImg)
   setImg(newImg.id)

@@ -46,7 +46,6 @@ function loadImageFromInput(ev, onImageReady) {
   reader.onload = (event) => {
     const img = new Image()
     img.src = event.target.result
-    console.log('img.src:',img.src)
 
     img.onload = () => {
       onImageReady(img.src)
