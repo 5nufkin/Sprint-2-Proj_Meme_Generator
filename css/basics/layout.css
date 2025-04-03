@@ -62,6 +62,7 @@
 .editor .controls-card .editor-typography {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
+  
 }
 
 .editor-input[type="color"] {
