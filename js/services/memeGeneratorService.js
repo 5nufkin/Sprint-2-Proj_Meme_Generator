@@ -177,4 +177,3 @@ function RandomizeMeme() {
   resetMeme()
   gMeme.lines[gMeme.selectedLineIdx].txt = generateSentence(4)
 }
-

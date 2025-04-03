@@ -55,15 +55,37 @@
       </div>
     </section>
 
-    <section class="gallery">
+    <section class="gallery-container">
+      <div class="gallery-controls">
+        <div>
+          <label for="filter-by">
+            <input oninput="onFilterBy(this.value)" list="filter-options" id="filter-by"
+              placeholder="Search">
+              <button onclick="onClearFilter()">Clear</button>
+          </label>
+          <datalist id="filter-options">
+            <option value="Funny"></option>
+            <option value="Baby"></option>
+            <option value="Animals"></option>
+            <option value="Viral"></option>
+            <option value="Politics"></option>
+          </datalist>
+        </div>
+        <button class="btn btn-randomize" onclick="onRandomizeMeme()">I'm flexible</button>
+        <datalist placeholder="Search">
+          <option value="">Choco</option>
+        </datalist>
+      </div>
+      <section class="gallery">
+      </section>
     </section>
-
     <section class="saved-memes gallery"></section>
   </main>
 
 
   <script src="js/services/storageService.js"></script>
   <script src="js/services/utilService.js"></script>
+  <script src="js/services/galleryService.js"></script>
   <script src="js/services/memeGeneratorService.js"></script>
   <script src="js/services/savedMemesService.js"></script>
   <script src="js/controllers/galleryController.js"></script>
