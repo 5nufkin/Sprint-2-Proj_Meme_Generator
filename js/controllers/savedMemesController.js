@@ -3,7 +3,6 @@
 function onSaveMeme() {
   const memeUrl = gElCanvas.toDataURL()
   addMeme(memeUrl)
-  _saveMemesToStorage()
   // TODO: For now - change rendering later on (singlePageApp)
   renderSavedMemes()
 }
@@ -15,7 +14,7 @@ function renderSavedMemes() {
 }
 
 function coverCanvasWithMeme(memeIdx) {
-  gMeme = { ...gSavedMemes[memeIdx] }
+  updateGMeme(gSavedMemes[memeIdx])
   handleSectionChange('editor')
   renderMeme()
 }

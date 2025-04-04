@@ -29,6 +29,7 @@ var gMeme = {
       txt: 'I sometimes eat Falafel',
       size: 20,
       color: 'steelblue',
+      outline: 'black',
       x: null,
       y: null
     }
@@ -50,6 +51,7 @@ function resetMeme() {
       txt: 'I sometimes eat Falafel',
       size: 20,
       color: 'steelblue',
+      outline: 'black',
       x: null,
       y: null
     }
@@ -70,7 +72,6 @@ function getMeme() {
 
 function setLineTxt(txt) {
   gMeme.lines[gMeme.selectedLineIdx].txt = txt
-  renderMeme()
 }
 
 function setImg(imgId) {
@@ -88,6 +89,7 @@ function _createLine(txt) {
     txt,
     size: 20,
     color: 'steelblue',
+    outline: 'black',
     x: null,
     y: null
   }
@@ -149,16 +151,16 @@ function selectLine(lineIdx) {
   gMeme.selectedLineIdx = lineIdx
 }
 
-function changeFont(newFont) {
-  gMeme.fontFamily = newFont
+function changeFontFamily(newFontFamily) {
+  gMeme.fontFamily = newFontFamily
 }
 
 function getFontFamily() {
   return gMeme.fontFamily
 }
 
-function changeTxtAlign(newVal) {
-  gMeme.textAlign = newVal
+function changeTxtAlign(alignDir) {
+  gMeme.textAlign = alignDir
 }
 
 function getTxtAlignment() {
@@ -180,14 +182,14 @@ function randomizeMeme() {
   gMeme.lines[gMeme.selectedLineIdx].txt = generateSentence(4)
 }
 
-function canvasToDataUrl() {
+function getCanvasAsDataUrl() {
   return gElCanvas.toDataURL('image/jpeg')
 }
 
 function addUserImg(url) {
-  const newImg = _createImg(url) 
+  const newImg = _createImg(url)
   gImgs.push(newImg)
-  
+
   setImg(newImg.id)
   // renderMeme() //TODO just for testing - move to a controller
   handleSectionChange('editor')
@@ -199,4 +201,18 @@ function _createImg(url) {
     id: gImgs.length + 1,
     url,
   }
+}
+
+function moveLine(dx, dy) {
+  gMeme.lines[gMeme.selectedLineIdx].x += dx
+  gMeme.lines[gMeme.selectedLineIdx].y += dy
+}
+
+function changeTxtColor(color) {
+  gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function changeFontSize(diff) {
+  const currFontSize = gMeme.lines[gMeme.selectedLineIdx].size
+  gMeme.lines[gMeme.selectedLineIdx].size = currFontSize + diff <= 0 ? currFontSize : currFontSize + diff
 }

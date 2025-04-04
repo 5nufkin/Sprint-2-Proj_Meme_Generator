@@ -37,3 +37,14 @@
 .search-container button{
   padding: 5px;
 }
+
+.gallery .btn-upload-img{
+  display: flex;
+  font-size: 1rem;
+}
+
+.btn-upload-img .upload-icon{
+  display: block;
+  font-size: 3.5em;
+  COLOR: #616c77;
+}

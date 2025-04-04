@@ -31,46 +31,43 @@ function renderMeme() {
     if (!memeLines.length) return
 
     memeLines.forEach((memeLine, idx) => {
-      renderTxt(memeLine.txt, memeLine.size, memeLine.color, idx)
+      renderTxt(memeLine.txt, memeLine.size, memeLine.color, memeLine.outline, idx)
     })
 
     highlightSelectedLine()
-    setInputText()
+    renderInputText()
   }
 }
 
-function renderTxt(txt, size, color, idx) {
+function renderTxt(txt, size, color, outline, idx) {
   const location = getLineLocation(idx)
   const fontFamily = getFontFamily()
   gCtx.font = `${size}px ${fontFamily}`
   gCtx.fillStyle = color
+  gCtx.strokeStyle = outline
   gCtx.textAlign = getTxtAlignment()
+  gCtx.strokeText(txt, location.x, location.y, gElCanvas.width - 40)
   gCtx.fillText(txt, location.x, location.y, gElCanvas.width - 40)
 }
 
 function handleTextInput(elInput) {
   setLineTxt(elInput.value)
+  renderMeme()
 }
 
 function onDownloadImg(elLink) {
-  elLink.href = canvasToDataUrl()
+  elLink.href = getCanvasAsDataUrl()
 }
 
 function onChangeTxtColor(elColorPicker) {
-  gMeme.lines[gMeme.selectedLineIdx].color = elColorPicker.value
+  changeTxtColor(elColorPicker.value)
   renderMeme()
 }
 
 function onChangeFontSize(diff) {
-  gMeme.lines[gMeme.selectedLineIdx].size += diff
+  changeFontSize(diff)
   renderMeme()
 }
-
-//TODO: Merge to 1 function
-// function onChangeLinePrefs(property, value) {
-//   if (property === 'size') value += gMeme.lines[gMeme.selectedLineIdx][property]
-//   gMeme.lines[gMeme.selectedLineIdx][property] = value
-// }
 
 function onAddLine() {
   addLine()
@@ -79,11 +76,11 @@ function onAddLine() {
 
 function onSwitchLine() {
   switchLine()
-  setInputText()
+  renderInputText()
   renderMeme()
 }
 
-function setInputText() {
+function renderInputText() {
   const elTextInput = getSelectedLine().txt
   document.querySelector('.input-text').value = elTextInput
 }
@@ -107,13 +104,13 @@ function onSelectLine(ev) {
   renderMeme()
 }
 
-function onChangeFont(newFont) {
-  changeFont(newFont)
+function onChangeFontFamily(newFontFamily) {
+  changeFontFamily(newFontFamily)
   renderMeme()
 }
 
-function onChangeTxtAlign(newVal) {
-  changeTxtAlign(newVal)
+function onChangeTxtAlign(alignDir) {
+  changeTxtAlign(alignDir)
   renderMeme()
 }
 
@@ -156,11 +153,6 @@ function onMove(ev) {
   moveLine(dx, dy)
   gLastPos = pos
   renderMeme()
-}
-
-function moveLine(dx, dy) {
-  gMeme.lines[gMeme.selectedLineIdx].x += dx
-  gMeme.lines[gMeme.selectedLineIdx].y += dy
 }
 
 function getEvPos(ev) {

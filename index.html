@@ -37,7 +37,8 @@
 
           <div class="editor-line-actions">
             <button class="editor-input" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
-            <button class="editor-input" onclick="onSwitchLine()"><i class="fa-solid fa-arrows-up-down"></i></i></button>
+            <button class="editor-input" onclick="onSwitchLine()"><i
+                class="fa-solid fa-arrows-up-down"></i></i></button>
             <button class="editor-input" onclick="onRemoveLine()"><i class="fa-solid fa-trash-can"></i></button>
           </div>
 
@@ -45,10 +46,10 @@
             <button class="editor-input" onclick="onMoveVertically(-1)"><i class="fa-solid fa-up-long"></i></button>
             <button class="editor-input" onclick="onMoveVertically(1)"><i class="fa-solid fa-down-long"></i></button>
           </div>
-          
-          
+
+
           <div class="editor-typography">
-            <select class="editor-input select-font" name="font-family" id="" onchange="onChangeFont(this.value)">
+            <select class="editor-input select-font" name="font-family" id="" onchange="onChangeFontFamily(this.value)">
               <option value="'Arial'">Arial</option>
               <option value="'Helvetica'">Helvetica</option>
               <option value="'Verdana'">Verdana</option>
@@ -59,16 +60,21 @@
               <option value="'Times New Roman'">Times New Roman</option>
               <option value="'Georgia'">Georgia</option>
             </select>
-            
-            <button class="editor-input" onclick="onChangeFontSize(1)"><i
-              class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
-              <button class="editor-input" onclick="onChangeFontSize(-1)"><i class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
-              
-              <input class="editor-input" type="color" value="#4682b4" oninput="onChangeTxtColor(this)">
 
-            <button class="editor-input" onclick="onChangeTxtAlign('left')"><i class="fa-solid fa-align-left"></i></button>
-            <button class="editor-input" onclick="onChangeTxtAlign('center')"><i class="fa-solid fa-align-center"></i></button>
-            <button class="editor-input" onclick="onChangeTxtAlign('right')"><i class="fa-solid fa-align-right"></i></button>
+            <button class="editor-input" onclick="onChangeFontSize(-2)"><i
+                class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
+            <button class="editor-input" onclick="onChangeFontSize(2)"><i
+                class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
+
+            <input class="editor-input" type="color" value="#4682b4" oninput="onChangeTxtColor(this)">
+              <!-- TODO: Add outline-color button and functionality -->
+
+            <button class="editor-input" onclick="onChangeTxtAlign('left')"><i
+                class="fa-solid fa-align-left"></i></button>
+            <button class="editor-input" onclick="onChangeTxtAlign('center')"><i
+                class="fa-solid fa-align-center"></i></button>
+            <button class="editor-input" onclick="onChangeTxtAlign('right')"><i
+                class="fa-solid fa-align-right"></i></button>
 
           </div>
 
@@ -79,12 +85,13 @@
             <button class="editor-input btn emoji-btn" onclick="onAddEmoji(this)">🤡</button>
             <button class="editor-input btn emoji-btn" onclick="onAddEmoji(this)">🙄</button>
           </div>
-          
+
           <div class="editor-share">
             <button class="editor-input" onclick="onSaveMeme()"><i class="fa-solid fa-floppy-disk"></i></button>
             <a href="#" class="editor-input" onclick="onDownloadImg(this)" download="my-meme.jpg"><i
                 class="fa-solid fa-download"></i></a>
-            <button class="editor-input" onclick="onUploadImg(event)"><i class="fa-solid fa-share-from-square"></i></button>
+            <button class="editor-input" onclick="onUploadImg(event)"><i
+                class="fa-solid fa-share-from-square"></i></button>
             <section class="share-container"></section>
           </div>
 
@@ -98,7 +105,7 @@
         <div class="search-bar-container">
           <label class="search-container" for="filter-by">
             <input oninput="onFilterBy(this.value)" list="filter-options" id="filter-by" placeholder="Search">
-            <button onclick="onClearFilter()">Clear</button>
+            <button class="btn" onclick="onClearFilter()">Clear</button>
           </label>
           <datalist id="filter-options">
             <option value="Funny"></option>

@@ -24,6 +24,7 @@ function addMeme(url) {
   }
   
   gSavedMemes.unshift(memeToSave)
+  _saveMemesToStorage()
 }
 
 function removeMeme(memeIdx) {
@@ -33,4 +34,8 @@ function removeMeme(memeIdx) {
 
 function updateSavedMemes() {
   _saveMemesToStorage()
+}
+
+function updateGMeme(meme) {
+  gMeme = {...meme}
 }

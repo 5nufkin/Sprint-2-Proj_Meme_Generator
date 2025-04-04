@@ -10,12 +10,20 @@
   display: flex;
 }
 
+.flex-column{
+  flex-direction: column;
+}
+
 .justify-space-between{
   justify-content: space-between;
 }
 
 .align-center{
   align-items: center;
+}
+
+.justify-space-evenly{
+  justify-content: space-evenly;
 }
 
 /* GENERAL */
