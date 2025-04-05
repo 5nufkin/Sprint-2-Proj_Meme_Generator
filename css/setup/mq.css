@@ -64,6 +64,14 @@
     gap: 20px;
   }
 
+  .main-nav li{
+    transition: .3s;
+  }
+  
+  .main-nav li:hover{
+    transform: translateY(-4px);
+  }
+
   .btn-toggle-menu,
   .main-nav ul li:has(> button.btn-close-menu) {
     display: none;

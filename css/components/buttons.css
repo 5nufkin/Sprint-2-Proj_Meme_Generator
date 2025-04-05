@@ -37,6 +37,17 @@
   height: 100%;
 }
 
+.keyword-btn{
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.keyword-all{
+  font-size: 1rem;
+}
+
 /* EDITOR CONTROLS */
 
 .editor input:focus {

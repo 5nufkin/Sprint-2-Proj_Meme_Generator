@@ -4,10 +4,36 @@ function renderGallery() {
   const imgs = getImgs()
 
   const uploadImgHTML = `<article><input class="input-img-upload" type="file" onchange="onImgInput(event)" accept=".jpg, .jpeg, .png, .webp" hidden></input><button onclick="onUploadClick()" class="btn btn-upload-img flex-column justify-space-evenly"><span class="upload-icon"><i class="fa-solid fa-upload"></span></i>Upload your own</button></article>`
+  renderKeywords()
 
   var strHTMLs = imgs.map(img => `<article><img onclick="onImgSelect(${img.id})" src="img/${img.id}.jpg"></article>`)
-  
+
   document.querySelector('.gallery').innerHTML = uploadImgHTML + strHTMLs.join('')
+}
+
+function renderKeywords() {
+  const keywords = getKeywords()
+  const keys = Object.keys(keywords)
+  const values = Object.values(keywords)
+
+  var strHTML = '<button onclick="onClearFilter()" class="keyword-btn keyword-all">All</button>'
+
+  for (var i = 0; i < keys.length; i++) {
+    strHTML += `<button class="keyword-btn keyword-${keys[i]}" onclick="onSearchKeyword('${keys[i]}')" style="font-size:${limitFontSize(values[i])}px">${keys[i]}</button>`
+  }
+
+  document.querySelector('.keywords-search-bar').innerHTML = strHTML
+}
+
+function limitFontSize(searchCount) {
+  return searchCount >= 13 ? 40 : 14 + (searchCount * 2)
+}
+
+function onSearchKeyword(keyword) {
+  const searchCount = increaseKeywordCount(keyword)
+  console.log('searchCount:', searchCount)
+  document.querySelector(`.keyword-${keyword}`).style.fontSize = limitFontSize(searchCount) + 'px'
+  onFilterBy(keyword)
 }
 
 function onImgSelect(imgId) {
@@ -21,9 +47,16 @@ function onRandomizeMeme() {
   handleSectionChange('editor')
 }
 
-function onFilterBy(filter) {
-  setFilterBy(filter)
-  // const imgsFilteredBy = filterBy(filter)
+function onFilterBy(filterBy) {
+  setFilterBy(filterBy)
+
+  const filter = getFilterBy().toLowerCase()
+  const keywords = getKeywords()
+
+  if (keywords[filter]) {
+    increaseKeywordCount(filter)
+    renderKeywords()
+  }
   renderGallery()
 }
 
@@ -44,8 +77,8 @@ function onImgInput(ev) {
 
 function loadImageFromInput(ev, onImageReady) {
   const reader = new FileReader()
-    // TODO: move to right place
-    gMeme.selectedImgId = null
+  // TODO: move to right place
+  gMeme.selectedImgId = null
 
   reader.onload = (event) => {
     const img = new Image()
@@ -54,7 +87,7 @@ function loadImageFromInput(ev, onImageReady) {
     img.onload = () => {
       onImageReady(img.src)
       // onImageReady(img)
-    
+
     }
   }
   reader.readAsDataURL(ev.target.files[0])

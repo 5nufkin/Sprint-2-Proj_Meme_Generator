@@ -14,16 +14,16 @@
   <div onclick="onToggleMenu()" class="main-screen"></div>
 
   <header class="full main-layout main-header">
-      <img class="logo" onclick="handleSectionChange('gallery-container')" src="img/logo/logo.png" alt="">
-      <nav class="main-nav">
-        <ul class="clean-list flex">
-          <li><button class="btn-close-menu" onclick="onToggleMenu()">X</button></li>
-          <li><a onclick="handleSectionChange('gallery-container')" href="#">Gallery</a></li>
-          <li><a onclick="handleSectionChange('saved-memes')" href="#">Saved</a></li>
-          <li><a onclick="handleSectionChange('about')" href="#">About</a></li>
-        </ul>
-      </nav>
-      <button class="btn-toggle-menu" onclick="onToggleMenu()">🍔</button>
+    <img class="logo" onclick="handleSectionChange('gallery-container')" src="img/logo/logo.png" alt="">
+    <nav class="main-nav">
+      <ul class="clean-list flex">
+        <li><button class="btn-close-menu" onclick="onToggleMenu()">X</button></li>
+        <li><a onclick="handleSectionChange('gallery-container')" href="#">Gallery</a></li>
+        <li><a onclick="handleSectionChange('saved-memes')" href="#">Saved</a></li>
+        <li><a onclick="handleSectionChange('about')" href="#">About</a></li>
+      </ul>
+    </nav>
+    <button class="btn-toggle-menu" onclick="onToggleMenu()">🍔</button>
   </header>
 
   <main>
@@ -70,7 +70,7 @@
             </label>
 
             <label class="color-picker editor-input" for="outline-input">
-              <input class="editor-input" id="outline-input" type="color" value="#000"
+              <input class="editor-input" id="outline-input" type="color" value="#000000"
                 oninput="onChangeOutlineColor(this)">
               <i class="fa-solid fa-highlighter"></i>
             </label>
@@ -133,9 +133,12 @@
             <option value="Animals"></option>
             <option value="Viral"></option>
             <option value="Politics"></option>
+            <option value="Sad"></option>
           </datalist>
         </div>
 
+        <div class="keywords-search-bar justify-space-evenly align-center">
+        </div>
       </div>
 
       <section class="gallery">

@@ -15,15 +15,15 @@
 
 /* MAIN HEADER LAYOUT */
 
-.main-header{
+.main-header {
   align-items: center;
 }
 
-.main-header>*{
+.main-header>* {
   grid-row: 1;
 }
 
-.main-header nav{
+.main-header nav {
   justify-self: end;
 }
 
@@ -125,4 +125,33 @@
   max-width: 500px;
   align-items: center;
   gap: 4px;
+}
+
+/* GALLERY CONTROLS */
+.gallery-controls {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "flexible search"
+    "keywords keywords";
+  gap: 10px;
+}
+
+.gallery-controls>* {
+  width: 100%;
+}
+
+.gallery-controls .btn-randomize {
+  max-width: 120px;
+  grid-area: flexible;
+}
+
+.galley-controls .search-container {
+  grid-area: search;
+}
+
+.gallery-controls .keywords-search-bar {
+  display: flex;
+  grid-area: keywords;
 }

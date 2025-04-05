@@ -38,9 +38,8 @@ var gMeme = {
   textAlign: 'left',
 }
 
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+var gKeywordSearchCountMap = { 'funny': 5, 'baby': 2, 'politics': 0, 'cat': 8, 'animals': 1, 'viral': 2 }
 
-// DRAG & DROP
 var gLastPos
 var gIsDrag = false
 
@@ -219,4 +218,12 @@ function changeOutlineColor(color) {
 function changeFontSize(diff) {
   const currFontSize = gMeme.lines[gMeme.selectedLineIdx].size
   gMeme.lines[gMeme.selectedLineIdx].size = currFontSize + diff <= 0 ? currFontSize : currFontSize + diff
+}
+
+function getKeywords() {
+  return gKeywordSearchCountMap
+}
+
+function increaseKeywordCount(keyword) {
+  return gKeywordSearchCountMap[keyword] += 1
 }
