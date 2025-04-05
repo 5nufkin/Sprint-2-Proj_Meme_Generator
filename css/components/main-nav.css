@@ -1,11 +1,4 @@
-.main-nav{
-  background: linear-gradient(to bottom right, #5be1bc, #7085d4);
-}
-
-.main-nav-list{
-  gap: 15px;
-}
 
 .main-nav a{
-  color: white;
+  color: #fff;
 }

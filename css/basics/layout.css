@@ -1,7 +1,7 @@
 /* MAIN LAYOUT */
 .main-layout {
   display: grid;
-  grid-template-columns: minmax(20px, auto) minmax(auto, 960px) minmax(20px, auto);
+  grid-template-columns: 16px 1fr 16px;
   grid-template-rows: auto 1fr;
 }
 
@@ -13,16 +13,17 @@
   grid-column: 2;
 }
 
-/* MAIN NAV LAYOUT */
-.main-nav {
+/* MAIN HEADER LAYOUT */
+
+.main-header{
   align-items: center;
 }
 
-.main-nav>* {
+.main-header>*{
   grid-row: 1;
 }
 
-.main-nav ul {
+.main-header nav{
   justify-self: end;
 }
 
@@ -123,5 +124,5 @@
   width: 100%;
   max-width: 500px;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
 }

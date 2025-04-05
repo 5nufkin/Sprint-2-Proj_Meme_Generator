@@ -11,15 +11,19 @@
 
 <body class="main-layout" onload="onInit()">
 
-  <header class="full main-layout">
-    <nav class="main-nav full main-layout">
+  <div onclick="onToggleMenu()" class="main-screen"></div>
+
+  <header class="full main-layout main-header">
       <img class="logo" onclick="handleSectionChange('gallery-container')" src="img/logo/logo.png" alt="">
-      <ul class="main-nav-list clean-list flex">
-        <li><a onclick="handleSectionChange('gallery-container')" href="#">Gallery</a></li>
-        <li><a onclick="handleSectionChange('saved-memes')" href="#">Saved</a></li>
-        <li><a onclick="handleSectionChange('about')" href="#">About</a></li>
-      </ul>
-    </nav>
+      <nav class="main-nav">
+        <ul class="clean-list flex">
+          <li><button class="btn-close-menu" onclick="onToggleMenu()">X</button></li>
+          <li><a onclick="handleSectionChange('gallery-container')" href="#">Gallery</a></li>
+          <li><a onclick="handleSectionChange('saved-memes')" href="#">Saved</a></li>
+          <li><a onclick="handleSectionChange('about')" href="#">About</a></li>
+        </ul>
+      </nav>
+      <button class="btn-toggle-menu" onclick="onToggleMenu()">🍔</button>
   </header>
 
   <main>
@@ -80,15 +84,15 @@
             <div class="line-management">
               <button class="editor-input" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
               <button class="editor-input" onclick="onSwitchLine()"><i
-                class="fa-solid fa-arrows-up-down"></i></i></button>
-                <button class="editor-input" onclick="onRemoveLine()"><i class="fa-solid fa-trash-can"></i></button>
-              </div>
-            
+                  class="fa-solid fa-arrows-up-down"></i></i></button>
+              <button class="editor-input" onclick="onRemoveLine()"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+
             <div class="line-positioning">
               <button class="editor-input" onclick="onMoveVertically(-1)"><i class="fa-solid fa-up-long"></i></button>
               <button class="editor-input" onclick="onMoveVertically(1)"><i class="fa-solid fa-down-long"></i></button>
             </div>
-              
+
           </div>
 
 
@@ -102,7 +106,8 @@
           </div>
 
           <div class="editor-share">
-            <button class="editor-input btn-save" onclick="onSaveMeme()"><i class="fa-solid fa-floppy-disk"></i></button>
+            <button class="editor-input btn-save" onclick="onSaveMeme()"><i
+                class="fa-solid fa-floppy-disk"></i></button>
             <a href="#" class="editor-input btn-download" onclick="onDownloadImg(this)" download="my-meme.jpg"><i
                 class="fa-solid fa-download"></i></a>
             <button class="editor-input btn-share" onclick="onUploadImg(event)"><i

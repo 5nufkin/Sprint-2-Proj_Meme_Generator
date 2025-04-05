@@ -25,7 +25,6 @@
 
 .search-container input,
 .gallery-controls .btn-randomize{
-  flex: 1; 
   padding: 5px;
   font-size: 16px;
   border: 2px solid rgb(120, 174, 220);
@@ -34,8 +33,13 @@
   color: white;
 }
 
-.search-container button{
-  padding: 5px;
+.gallery-controls .btn-randomize{
+  max-width: 120px;
+}
+
+.gallery-controls .search-container input{
+  flex: 1;
+  padding-inline-start: 10px;
 }
 
 .gallery .btn-upload-img{
