@@ -212,6 +212,10 @@ function changeTxtColor(color) {
   gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
+function changeOutlineColor(color) {
+  gMeme.lines[gMeme.selectedLineIdx].outline = color
+}
+
 function changeFontSize(diff) {
   const currFontSize = gMeme.lines[gMeme.selectedLineIdx].size
   gMeme.lines[gMeme.selectedLineIdx].size = currFontSize + diff <= 0 ? currFontSize : currFontSize + diff

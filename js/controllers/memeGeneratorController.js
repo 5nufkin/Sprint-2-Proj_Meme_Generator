@@ -64,6 +64,11 @@ function onChangeTxtColor(elColorPicker) {
   renderMeme()
 }
 
+function onChangeOutlineColor(elOutlineColorPicker) {
+  changeOutlineColor(elOutlineColorPicker.value)
+  renderMeme()
+}
+
 function onChangeFontSize(diff) {
   changeFontSize(diff)
   renderMeme()
@@ -191,9 +196,10 @@ function onUploadImg(ev) {
           <a target="_blank" href="${uploadedImgUrl}">Image Url</a>
          
           <button class="btn-facebook" target="_blank" onclick="onUploadToFB('${encodedUploadedImgUrl}')">
-              Share on Facebook  
+              <i class="fa-brands fa-square-facebook"></i> Share  
           </button>
       `
   }
   uploadImg(canvasData, onSuccess)
 }
+

@@ -29,7 +29,85 @@
 /* CANVAS CONTAINER */
 .editor {
   display: grid;
-  grid-template-columns: 50% 50%;
+  justify-items: center;
+}
+
+/* EDITOR CONTROLS */
+.editor .controls-card {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 445px;
+  height: 100%;
+  padding: 10px 5px;
+}
+
+.editor .controls {
+  padding: 10px 20px 20px;
+}
+
+.canvas-container {
+  width: 70%;
+  max-width: 350px;
+  padding: 5px 20px;
+}
+
+.controls {
+  width: 100%;
+}
+
+.editor-input.input-text {
+  width: 85%;
+  max-width: 460px;
+}
+
+.editor .controls-card .editor-typography {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+  gap: 4px;
+  width: 95%;
+  max-width: 520px;
+}
+
+.editor-input.select-font {
+  grid-row: 1;
+  grid-column: span 2;
+}
+
+.editor-line-actions {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 530px;
+}
+
+.share-container {
+  display: grid;
+}
+
+.share-container a {
+  color: white;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -4px;
+  text-decoration: underline;
+}
+
+.share-container .btn-facebook {
+  background: #516fad;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 5px;
+  cursor: pointer;
+}
+
+.editor-share {
+  display: flex;
+  gap: 12px;
 }
 
 /* GALLERY LAYOUT */
@@ -46,34 +124,4 @@
   max-width: 500px;
   align-items: center;
   gap: 10px;
-}
-
-/* EDITOR CONTROLS */
-.editor .controls-card {
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  height: 100%;
-  padding: 10px 5px;
-}
-
-.editor .controls-card .editor-typography {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-  gap: 4px;
-  max-width: 65%;
-}
-
-.editor-input[type="color"] {
-  width: 100%;
-  height: 100%;
-  grid-row: 2;
-  grid-column: span 2;
-}
-
-.editor-input.select-font{
-  grid-row: 1;
-  grid-column: span 2;
 }

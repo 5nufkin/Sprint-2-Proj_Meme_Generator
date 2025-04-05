@@ -1,10 +1,6 @@
 .editor {
   background-color: #666;
-}
-
-.canvas-container {
-  width: 100%;
-  padding: 30px 20px;
+  border-radius: 1rem;;
 }
 
 canvas {
@@ -14,13 +10,22 @@ canvas {
 
 /* EDITOR CONTROLS */
 
-.editor .controls {
-  padding: 30px 20px;
-}
-
 .editor .controls-card {
   background-color: #222;
   border-radius: 15px;
 }
 
+.color-picker {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.editor-input[type="color"] {
+  position: absolute;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+}

@@ -30,23 +30,8 @@
           ontouchmove="onMove(event)"></canvas>
       </div>
 
-      <div class="controls">
+      <div class="controls flex justify-center">
         <div class="controls-card">
-
-          <input class="editor-input input-text" oninput="handleTextInput(this)" type="text" placeholder="Enter text">
-
-          <div class="editor-line-actions">
-            <button class="editor-input" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
-            <button class="editor-input" onclick="onSwitchLine()"><i
-                class="fa-solid fa-arrows-up-down"></i></i></button>
-            <button class="editor-input" onclick="onRemoveLine()"><i class="fa-solid fa-trash-can"></i></button>
-          </div>
-
-          <div class="editor-size-color">
-            <button class="editor-input" onclick="onMoveVertically(-1)"><i class="fa-solid fa-up-long"></i></button>
-            <button class="editor-input" onclick="onMoveVertically(1)"><i class="fa-solid fa-down-long"></i></button>
-          </div>
-
 
           <div class="editor-typography">
             <select class="editor-input select-font" name="font-family" id="" onchange="onChangeFontFamily(this.value)">
@@ -61,14 +46,6 @@
               <option value="'Georgia'">Georgia</option>
             </select>
 
-            <button class="editor-input" onclick="onChangeFontSize(-2)"><i
-                class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
-            <button class="editor-input" onclick="onChangeFontSize(2)"><i
-                class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
-
-            <input class="editor-input" type="color" value="#4682b4" oninput="onChangeTxtColor(this)">
-              <!-- TODO: Add outline-color button and functionality -->
-
             <button class="editor-input" onclick="onChangeTxtAlign('left')"><i
                 class="fa-solid fa-align-left"></i></button>
             <button class="editor-input" onclick="onChangeTxtAlign('center')"><i
@@ -76,7 +53,45 @@
             <button class="editor-input" onclick="onChangeTxtAlign('right')"><i
                 class="fa-solid fa-align-right"></i></button>
 
+
+            <button class="editor-input" onclick="onChangeFontSize(-2)"><i
+                class="fa-solid fa-down-left-and-up-right-to-center"></i></button>
+            <button class="editor-input" onclick="onChangeFontSize(2)"><i
+                class="fa-solid fa-up-right-and-down-left-from-center"></i></button>
+
+            <label class="color-picker editor-input" for="color-input">
+              <input class="editor-input" id="color-input" type="color" value="#4682b4"
+                oninput="onChangeTxtColor(this)">
+              <i class="fa-solid fa-palette"></i>
+            </label>
+
+            <label class="color-picker editor-input" for="outline-input">
+              <input class="editor-input" id="outline-input" type="color" value="#000"
+                oninput="onChangeOutlineColor(this)">
+              <i class="fa-solid fa-highlighter"></i>
+            </label>
           </div>
+
+
+          <input class="editor-input input-text" oninput="handleTextInput(this)" type="text" placeholder="Enter text">
+
+          <div class="editor-line-actions">
+
+            <div class="line-management">
+              <button class="editor-input" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+              <button class="editor-input" onclick="onSwitchLine()"><i
+                class="fa-solid fa-arrows-up-down"></i></i></button>
+                <button class="editor-input" onclick="onRemoveLine()"><i class="fa-solid fa-trash-can"></i></button>
+              </div>
+            
+            <div class="line-positioning">
+              <button class="editor-input" onclick="onMoveVertically(-1)"><i class="fa-solid fa-up-long"></i></button>
+              <button class="editor-input" onclick="onMoveVertically(1)"><i class="fa-solid fa-down-long"></i></button>
+            </div>
+              
+          </div>
+
+
 
           <div class="emojis">
             <button class="editor-input btn emoji-btn" onclick="onAddEmoji(this)">😂</button>
@@ -87,10 +102,10 @@
           </div>
 
           <div class="editor-share">
-            <button class="editor-input" onclick="onSaveMeme()"><i class="fa-solid fa-floppy-disk"></i></button>
-            <a href="#" class="editor-input" onclick="onDownloadImg(this)" download="my-meme.jpg"><i
+            <button class="editor-input btn-save" onclick="onSaveMeme()"><i class="fa-solid fa-floppy-disk"></i></button>
+            <a href="#" class="editor-input btn-download" onclick="onDownloadImg(this)" download="my-meme.jpg"><i
                 class="fa-solid fa-download"></i></a>
-            <button class="editor-input" onclick="onUploadImg(event)"><i
+            <button class="editor-input btn-share" onclick="onUploadImg(event)"><i
                 class="fa-solid fa-share-from-square"></i></button>
             <section class="share-container"></section>
           </div>
