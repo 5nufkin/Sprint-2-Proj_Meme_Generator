@@ -65,6 +65,10 @@
   border-radius: 2em;
 }
 
+.editor-input.input-text::placeholder{
+  color: #fff;
+}
+
 .editor-input.emoji-btn {
   background-color: transparent;
   padding: 0;
