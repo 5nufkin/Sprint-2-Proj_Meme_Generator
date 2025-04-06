@@ -122,11 +122,14 @@
     <section class="gallery-container app-section">
       <div class="gallery-controls">
         <button class="btn btn-randomize" onclick="onRandomizeMeme()">I'm flexible</button>
+        
         <div class="search-bar-container">
-          <label class="search-container" for="filter-by">
+
+          <div class="search-container" for="filter-by">
             <input oninput="onFilterBy(this.value)" list="filter-options" id="filter-by" placeholder="Search">
-            <button class="btn" onclick="onClearFilter()">Clear</button>
-          </label>
+            <button class="btn hidden" onclick="onClearFilter()">X</button>
+          </div>
+
           <datalist id="filter-options">
           </datalist>
         </div>

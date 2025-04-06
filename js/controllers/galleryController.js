@@ -48,6 +48,14 @@ function onRandomizeMeme() {
 }
 
 function onFilterBy(filterBy) {
+  console.log('filterBy:', filterBy)
+  const searchBar = document.querySelector('.search-container input')
+  const clearBtn = document.querySelector('.search-container .btn')
+  if (searchBar.value) {
+    clearBtn.classList.remove('hidden')
+  } else {
+    clearBtn.classList.add('hidden')
+  }
   setFilterBy(filterBy)
 
   const filter = getFilterBy().toLowerCase()
@@ -62,7 +70,7 @@ function onFilterBy(filterBy) {
 
 function onClearFilter() {
   document.querySelector('#filter-by').value = ''
-  setFilterBy('')
+  onFilterBy('')
   renderGallery()
 }
 

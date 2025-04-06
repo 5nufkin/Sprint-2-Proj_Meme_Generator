@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-.gallery article{
+.gallery article {
   margin-block-end: 10px;
 }
 
@@ -36,10 +36,29 @@
   color: white;
 }
 
+.gallery-controls .search-container {
+  position: relative;
+}
+
 .gallery-controls .search-container input {
   flex: 1;
   padding-inline-start: 10px;
 }
+
+.gallery-controls .search-container button {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.gallery-controls .search-container input {
+  padding-inline-end: 30px;
+}
+
+
 
 .gallery .btn-upload-img {
   display: flex;
